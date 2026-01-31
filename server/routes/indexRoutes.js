@@ -6,6 +6,7 @@ const mainRoutes = require("./mainRoutes");
 router.get("/", (req, res) => {
   res.send("API is working");
 });
+
 router.use("/users", userRoutes);
 router.use("/main", mainRoutes);
 

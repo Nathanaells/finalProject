@@ -2,6 +2,11 @@ const errorHandler = (err, req, res, next) => {
   let status = 500;
   let message = "Internal Server Error";
 
+  if (err.name === "LoginError") {
+    status = 401;
+    message = "Invalid Email or Password";
+  }
+
   if (
     err.name === "SequelizeUniqueConstraintError" ||
     err.name === "SequelizeValidationError"

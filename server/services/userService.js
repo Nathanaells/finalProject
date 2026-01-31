@@ -17,13 +17,13 @@ class UserService {
       const user = await UserRepository.findByEmail(email);
 
       if (!user) {
-        throw { name: "UnauthorizedError", message: "Invalid credentials" };
+        throw { name: "LoginError", message: "Invalid credentials" };
       }
 
       const isPasswordValid = verifyPassword(password, user.password);
 
       if (!isPasswordValid) {
-        throw { name: "UnauthorizedError", message: "Invalid credentials" };
+        throw { name: "LoginError", message: "Invalid credentials" };
       }
 
       const access_token = signToken({
